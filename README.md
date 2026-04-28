@@ -21,9 +21,7 @@ Aplicação React + TypeScript que permite buscar usuários do GitHub, visualiza
 
 ```bash
 pnpm install
-cp .env.example .env   # opcional: defina VITE_GITHUB_TOKEN para limite maior (ver .env.example)
-git init                # se ainda não inicializou
-pnpm prepare            # ativa os git hooks (Husky)
+cp .env.example .env
 ```
 
 ## Rodando localmente
@@ -36,18 +34,18 @@ Aplicação disponível em `http://localhost:5173`.
 
 ## Scripts
 
-| Comando              | Descrição                                  |
-| -------------------- | ------------------------------------------ |
-| `pnpm dev`           | Servidor de desenvolvimento em :5173       |
-| `pnpm build`         | Type-check + build de produção             |
-| `pnpm preview`       | Serve o build local                        |
-| `pnpm lint`          | Roda ESLint                                |
-| `pnpm lint:fix`      | Aplica fixes do ESLint                     |
-| `pnpm format`        | Formata todo o código com Prettier         |
-| `pnpm type-check`    | `tsc --noEmit`                             |
-| `pnpm test`          | Vitest em modo watch                       |
-| `pnpm test:run`      | Vitest single-pass                         |
-| `pnpm test:coverage` | Cobertura via v8                           |
+| Comando              | Descrição                            |
+| -------------------- | ------------------------------------ |
+| `pnpm dev`           | Servidor de desenvolvimento em :5173 |
+| `pnpm build`         | Type-check + build de produção       |
+| `pnpm preview`       | Serve o build local                  |
+| `pnpm lint`          | Roda ESLint                          |
+| `pnpm lint:fix`      | Aplica fixes do ESLint               |
+| `pnpm format`        | Formata todo o código com Prettier   |
+| `pnpm type-check`    | `tsc --noEmit`                       |
+| `pnpm test`          | Vitest em modo watch                 |
+| `pnpm test:run`      | Vitest single-pass                   |
+| `pnpm test:coverage` | Cobertura via v8                     |
 
 ## Estrutura
 
@@ -78,20 +76,3 @@ style:    formatação
 ci:       pipeline
 build:    build/dependências
 ```
-
-Validados automaticamente via `commitlint` no hook `commit-msg`.
-
-## Deploy
-
-### Vercel
-
-1. Importe o repositório na Vercel.
-2. Framework preset: `Vite`.
-3. Build command: `pnpm build`.
-4. Output directory: `dist`.
-
-### Netlify
-
-1. Importe o repositório na Netlify.
-2. Build command: `pnpm build`.
-3. Publish directory: `dist`.
