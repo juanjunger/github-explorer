@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Premium dark visual system */
+
+:root {
+  --lab-100: #397eec;
+  --lab-300: #316bca;
+  --lab-500: #3b82f5;
+  --lab-700: #2b59a8;
+  --lab-900: #204786;
+
+  --color-bg: #05070a;
+  --color-surface: #0b0f14;
+  --color-surface-elevated: #11161c;
+  --color-text: #f7f8fa;
+  --color-text-secondary: #a9b4c2;
+  --color-text-muted: #7f8b99;
+  --color-border: #253041;
+  --color-primary: var(--lab-500);
+  --color-primary-hover: var(--lab-700);
+  --color-accent: #22d3ee;
+
+  --shadow-sm: 0 4px 12px rgb(0 0 0 / 24%);
+  --shadow-md: 0 12px 32px rgb(0 0 0 / 30%);
+  --shadow-lg: 0 20px 48px rgb(0 0 0 / 38%);
+
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-secondary-color: var(--color-text-secondary);
+  --bs-border-color: var(--color-border);
+  --bs-heading-color: var(--color-text);
+  --bs-card-bg: var(--color-surface-elevated);
+  --bs-card-color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(
+      180deg,
+      #04070d 0%,
+      #050a13 28%,
+      #050912 52%,
+      #05070a 100%
+    ),
+    var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Grid sutil + vinheta para manter consistencia entre secoes */
+body::before {
+  background:
+    radial-gradient(130% 90% at 50% 50%, transparent 46%, rgb(0 0 0 / 32%) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgb(75 123 210 / 0.07) 0 1px,
+      transparent 1px 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(75 123 210 / 0.07) 0 1px,
+      transparent 1px 40px
+    );
+}
+
+/* Sombras azuis espelhadas no eixo Y para continuidade visual */
+body::after {
+  background:
+    radial-gradient(
+      65rem 34rem at 14% -8%,
+      rgb(59 130 245 / 18%) 0%,
+      rgb(59 130 245 / 10%) 34%,
+      transparent 72%
+    ),
+    radial-gradient(
+      65rem 34rem at 14% 108%,
+      rgb(59 130 245 / 18%) 0%,
+      rgb(59 130 245 / 10%) 34%,
+      transparent 72%
+    ),
+    radial-gradient(
+      48rem 26rem at 86% 50%,
+      rgb(34 211 238 / 8%) 0%,
+      transparent 75%
+    );
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: clamp(1.9rem, 2.8vw, 2.35rem);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.25;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--lab-100);
+}
+
+button {
+  font-family: inherit;
+}
+
+.text-secondary,
+.text-muted {
+  color: var(--color-text-secondary) !important;
+}
+
+.github-card {
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.github-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--lab-300);
+  box-shadow: var(--shadow-md);
+}
+
+.transition-all {
+  transition: all 0.2s ease;
+}
+
+.repo-card {
+  height: 236px;
+}
+
+.repo-card:hover {
+  transform: scale(1.02);
+}
+
+.repo-card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 48px;
+}
+
+.repo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 55%);
+  animation: repoModalFade 180ms ease-out;
+}
+
+.repo-modal-panel {
+  position: relative;
+  width: min(640px, 100%);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  animation: repoModalScale 180ms ease-out;
+}
+
+.repo-modal-section {
+  margin-top: 0.95rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgb(126 152 193 / 18%);
+}
+
+.repo-modal-section--header {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  padding-right: 2.25rem;
+}
+
+.repo-modal-section--footer {
+  margin-top: 1.25rem;
+}
+
+.repo-modal-section__label {
+  margin-bottom: 0.45rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.repo-modal-homepage {
+  display: inline-block;
+  margin-top: 0.2rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgb(126 152 193 / 22%);
+}
+
+.repo-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.repo-modal-close:hover {
+  color: var(--color-text);
+  border-color: #3d444d;
+}
+
+@keyframes repoModalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes repoModalScale {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.form-control,
+.form-select {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  min-height: 46px;
+}
+
+.form-control::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgb(59 130 245 / 28%);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--lab-500), var(--lab-300));
+  border-color: var(--lab-500);
+  color: var(--color-text);
+  font-weight: 600;
+  border-radius: 12px;
+  min-height: 44px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--lab-300), var(--lab-700));
+  border-color: var(--lab-700);
+  color: var(--color-text);
+}
+
+.btn-outline-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  border-radius: 12px;
+  min-height: 44px;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+.btn-outline-primary:focus-visible,
+.btn-primary:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-bg),
+    0 0 0 4px rgb(59 130 245 / 55%);
+}
+
+.btn-outline-primary:disabled {
+  color: #6e7681;
+  border-color: #484f58;
+  background-color: transparent;
+}
+
+.badge.text-bg-primary {
+  background-color: var(--color-primary) !important;
+  color: var(--color-text) !important;
+}
+
+.badge-branch {
+  background-color: #1a2332;
+  color: #d8e5ff;
+  border: 1px solid #2f4a77;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.page-content {
+  width: min(980px, 100%);
+}
+
+.error-message {
+  background-color: #2a1217;
+  border: 1px solid #ef4444;
+  border-radius: 12px;
+  padding: 1rem 1.125rem;
+}
+
+.error-message__title {
+  color: #ffb4ad;
+  font-weight: 700;
+}
+
+.error-message__text {
+  color: #ffd7d5;
+}
+
+.error-message__detail {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
