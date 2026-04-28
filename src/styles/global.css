@@ -59,13 +59,7 @@ body {
   position: relative;
   isolation: isolate;
   background:
-    linear-gradient(
-      180deg,
-      #04070d 0%,
-      #050a13 28%,
-      #050912 52%,
-      #05070a 100%
-    ),
+    linear-gradient(180deg, #04070d 0%, #050a13 28%, #050912 52%, #05070a 100%),
     var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
@@ -84,7 +78,11 @@ body::after {
 /* Grid sutil + vinheta para manter consistencia entre secoes */
 body::before {
   background:
-    radial-gradient(130% 90% at 50% 50%, transparent 46%, rgb(0 0 0 / 32%) 100%),
+    radial-gradient(
+      130% 90% at 50% 50%,
+      transparent 46%,
+      rgb(0 0 0 / 32%) 100%
+    ),
     repeating-linear-gradient(
       0deg,
       rgb(75 123 210 / 0.07) 0 1px,
@@ -161,7 +159,10 @@ button {
   border: 1px solid var(--color-border);
   border-radius: 14px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .github-card:hover {

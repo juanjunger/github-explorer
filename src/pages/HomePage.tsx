@@ -5,8 +5,9 @@ import { UserSearchResults } from '@/components/UserSearchResults/UserSearchResu
 import { useUserSearch } from '@/hooks/useUserSearch'
 
 export function HomePage() {
-  const { result, isLoading, error, currentQuery, search, goToPage } = useUserSearch()
-  const showEmptyState = !isLoading && !error && (result?.items.length === 0)
+  const { result, isLoading, error, currentQuery, search, goToPage } =
+    useUserSearch()
+  const showEmptyState = !isLoading && !error && result?.items.length === 0
 
   return (
     <main className="page-shell">
@@ -18,7 +19,10 @@ export function HomePage() {
           </p>
         </header>
         <section className="d-grid gap-3">
-          <SearchUserForm onSearch={(query) => void search(query)} isLoading={isLoading} />
+          <SearchUserForm
+            onSearch={(query) => void search(query)}
+            isLoading={isLoading}
+          />
 
           {isLoading && <LoadingSpinner label="Buscando usuários..." />}
 
