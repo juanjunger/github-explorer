@@ -56,12 +56,12 @@ export function RepositoryList({
   }
 
   return (
-    <section>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2 className="h4 mb-0">Repositórios</h2>
-        <div className="d-flex align-items-center gap-2 ms-auto">
+    <section className="repository-list">
+      <div className="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-3 justify-content-md-between mb-3">
+        <h2 className="h4 mb-0 flex-shrink-0">Repositórios</h2>
+        <div className="d-flex flex-column flex-sm-row gap-2 gap-sm-2 ms-md-auto w-100 w-md-auto align-items-stretch min-w-0">
           <select
-            className="form-select w-auto"
+            className="form-select repository-list__select"
             value={sortBy.field}
             onChange={(event) =>
               onChangeSortField(event.target.value as RepositorySortField)
@@ -73,7 +73,7 @@ export function RepositoryList({
             <option value="name">Nome</option>
           </select>
           <select
-            className="form-select w-auto"
+            className="form-select repository-list__select"
             value={sortBy.direction}
             onChange={(event) =>
               onChangeSortDirection(event.target.value as SortDirection)
